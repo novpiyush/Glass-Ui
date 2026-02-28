@@ -13,7 +13,6 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 
-/* Background Image */
 background:url("background.jpg");
 background-size:cover;
 background-position:center;
@@ -21,9 +20,6 @@ background-repeat:no-repeat;
 
 font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
 }
-
-
-/* Glass Card Preview */
 
 .card{
 
@@ -44,9 +40,6 @@ box-shadow:0 30px 70px rgba(0,0,0,0.7);
 
 }
 
-
-/* Photo */
-
 .photo{
 
 width:100%;
@@ -59,9 +52,6 @@ object-fit:cover;
 margin-bottom:14px;
 
 }
-
-
-/* Glass Text */
 
 .text{
 
@@ -81,9 +71,6 @@ text-align:center;
 
 }
 
-
-/* Premium Text */
-
 .line1{
 
 font-size:18px;
@@ -94,16 +81,12 @@ margin-bottom:6px;
 
 }
 
-
 .line2{
 
 font-size:14px;
 color:rgba(255,255,255,0.8);
 
 }
-
-
-/* Button */
 
 button{
 
@@ -127,10 +110,9 @@ cursor:pointer;
 
 <body>
 
-
 <div class="card">
 
-<img src="reel.jpg" class="photo">
+<img src="reel.png" class="photo">
 
 <div class="text">
 
@@ -162,9 +144,6 @@ let ctx=canvas.getContext("2d");
 canvas.width=2160;
 canvas.height=3840;
 
-
-/* Background */
-
 let bg=new Image();
 bg.src="background.jpg";
 
@@ -172,18 +151,12 @@ bg.onload=function(){
 
 ctx.drawImage(bg,0,0,2160,3840);
 
-
-/* Reel Photo */
-
 let img=new Image();
-img.src="reel.jpg";
+img.src="reel.png";
 
 img.onload=function(){
 
 ctx.drawImage(img,180,600,1800,1200);
-
-
-/* Text */
 
 ctx.fillStyle="white";
 ctx.textAlign="center";
@@ -193,9 +166,6 @@ ctx.fillText("2000 Family Members Complete",1080,2000);
 
 ctx.font="45px sans-serif";
 ctx.fillText("Thank You For Being Part Of This Journey",1080,2100);
-
-
-/* Download */
 
 let link=document.createElement("a");
 
@@ -210,7 +180,6 @@ link.click();
 }
 
 </script>
-
 
 </body>
 </html>
