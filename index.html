@@ -3,6 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 <style>
 
 body{
@@ -21,12 +23,14 @@ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
 }
 
 
-.card{
+/* Main Export Area */
 
-width:80vw;
-max-width:320px;
+#export{
 
-padding:14px;
+width:90vw;
+max-width:360px;
+
+padding:15px;
 
 border-radius:25px;
 
@@ -41,31 +45,31 @@ box-shadow:0 30px 70px rgba(0,0,0,0.7);
 }
 
 
+/* Reel Photo */
+
 .photo{
 
 width:100%;
-height:220px;
+border-radius:20px;
 
-border-radius:15px;
-
-object-fit:contain;
-
-background:black;
-
-margin-bottom:14px;
+object-fit:cover;
 
 }
 
 
+/* Text */
+
 .text{
 
-border-radius:15px;
+margin-top:15px;
 
-padding:18px;
+border-radius:20px;
 
-background:rgba(255,255,255,0.10);
+padding:20px;
 
-backdrop-filter:blur(25px);
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(20px);
 
 border:1px solid rgba(255,255,255,0.25);
 
@@ -76,7 +80,7 @@ text-align:center;
 
 .line1{
 
-font-size:18px;
+font-size:20px;
 font-weight:700;
 color:white;
 
@@ -88,16 +92,19 @@ color:white;
 font-size:14px;
 color:white;
 
+margin-top:5px;
+
 }
+
 
 
 button{
 
 margin-top:20px;
 
-padding:12px 25px;
+padding:14px 30px;
 
-border-radius:10px;
+border-radius:12px;
 
 border:none;
 
@@ -113,7 +120,8 @@ font-size:16px;
 <body>
 
 
-<div class="card">
+
+<div id="export">
 
 <img src="reel.png" class="photo">
 
@@ -143,71 +151,25 @@ Download 4K 9:16
 
 function download4K(){
 
-let canvas=document.createElement("canvas");
-let ctx=canvas.getContext("2d");
+html2canvas(document.getElementById("export"),{
 
-canvas.width=2160;
-canvas.height=3840;
+scale:4
 
-
-/* Background */
-
-let bg=new Image();
-bg.src="background.jpg";
-
-bg.onload=function(){
-
-ctx.drawImage(bg,0,0,2160,3840);
-
-
-/* Glass Card */
-
-ctx.fillStyle="rgba(255,255,255,0.12)";
-ctx.fillRect(330,900,1500,1800);
-
-
-/* Reel Photo */
-
-let img=new Image();
-img.src="reel.png";
-
-img.onload=function(){
-
-ctx.drawImage(img,400,1000,1360,900);
-
-
-/* Text */
-
-ctx.fillStyle="white";
-ctx.textAlign="center";
-
-ctx.font="bold 80px sans-serif";
-
-ctx.fillText("2000 Family Members Complete",1080,2300);
-
-ctx.font="50px sans-serif";
-
-ctx.fillText("Thank You For Being Part Of This Journey",1080,2400);
-
-
-/* Download */
+}).then(canvas=>{
 
 let link=document.createElement("a");
 
-link.download="Reel4K.png";
+link.download="4K_Reel.png";
 
 link.href=canvas.toDataURL();
 
 link.click();
 
-}
-
-}
+});
 
 }
 
 </script>
-
 
 </body>
 </html>
