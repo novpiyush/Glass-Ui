@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(#222,#000);
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+}
+
+
+/* Glass Card Preview */
+
+.card{
+
+width:80vw;
+max-width:320px;
+
+padding:14px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.12);
+
+backdrop-filter:blur(40px);
+
+border:1px solid rgba(255,255,255,0.35);
+
+box-shadow:0 30px 70px rgba(0,0,0,0.7);
+
+}
+
+
+/* Photo */
+
+.photo{
+
+width:100%;
+height:220px;
+
+border-radius:12px;
+
+object-fit:cover;
+
+margin-bottom:14px;
+
+}
+
+
+/* Glass Text */
+
+.text{
+
+border-radius:12px;
+
+padding:18px;
+
+padding-bottom:26px;
+
+background:rgba(255,255,255,0.10);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,0.25);
+
+text-align:center;
+
+}
+
+
+/* Premium Text */
+
+.line1{
+
+font-size:18px;
+font-weight:700;
+color:rgba(255,255,255,0.95);
+
+margin-bottom:6px;
+
+}
+
+
+.line2{
+
+font-size:14px;
+font-weight:500;
+color:rgba(255,255,255,0.75);
+
+}
+
+
+/* Button */
+
+button{
+
+margin-top:20px;
+
+padding:12px 25px;
+
+border-radius:10px;
+
+border:none;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="card">
+
+<img src="reel.jpg" class="photo">
+
+<div class="text">
+
+<div class="line1">
+2000 Family Members Complete
+</div>
+
+<div class="line2">
+Thank You For Being Part Of This Journey
+</div>
+
+</div>
+
+</div>
+
+
+<button onclick="download4K()">
+Download 4K 9:16
+</button>
+
+
+<script>
+
+function download4K(){
+
+let canvas=document.createElement("canvas");
+let ctx=canvas.getContext("2d");
+
+
+/* 9:16 4K */
+
+canvas.width=2160;
+canvas.height=3840;
+
+
+/* Background */
+
+let grad=ctx.createLinearGradient(0,0,0,3840);
+
+grad.addColorStop(0,"#222");
+grad.addColorStop(1,"#000");
+
+ctx.fillStyle=grad;
+
+ctx.fillRect(0,0,2160,3840);
+
+
+/* Photo */
+
+let img=new Image();
+
+img.src="reel.jpg";
+
+
+img.onload=function(){
+
+
+ctx.drawImage(img,180,600,1800,1200);
+
+
+/* Text */
+
+ctx.fillStyle="white";
+
+ctx.textAlign="center";
+
+
+ctx.font="bold 70px sans-serif";
+
+ctx.fillText(
+
+"2000 Family Members Complete",
+
+1080,
+
+2000
+
+);
+
+
+ctx.font="45px sans-serif";
+
+
+ctx.fillText(
+
+"Thank You For Being Part Of This Journey",
+
+1080,
+
+2100
+
+);
+
+
+/* Download */
+
+let link=document.createElement("a");
+
+link.download="2000_Followers_4K.png";
+
+link.href=canvas.toDataURL();
+
+link.click();
+
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>
