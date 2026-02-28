@@ -155,33 +155,26 @@ let canvas=document.createElement("canvas");
 let ctx=canvas.getContext("2d");
 
 
-/* 9:16 4K */
-
 canvas.width=2160;
 canvas.height=3840;
 
 
-/* Background */
+/* Background Image */
 
-let grad=ctx.createLinearGradient(0,0,0,3840);
+let bg=new Image();
+bg.src="background.jpg";
 
-grad.addColorStop(0,"#222");
-grad.addColorStop(1,"#000");
+bg.onload=function(){
 
-ctx.fillStyle=grad;
-
-ctx.fillRect(0,0,2160,3840);
+ctx.drawImage(bg,0,0,2160,3840);
 
 
-/* Photo */
+/* Reel Photo */
 
 let img=new Image();
-
 img.src="reel.jpg";
 
-
 img.onload=function(){
-
 
 ctx.drawImage(img,180,600,1800,1200);
 
@@ -192,32 +185,13 @@ ctx.fillStyle="white";
 
 ctx.textAlign="center";
 
-
 ctx.font="bold 70px sans-serif";
 
-ctx.fillText(
-
-"2000 Family Members Complete",
-
-1080,
-
-2000
-
-);
-
+ctx.fillText("2000 Family Members Complete",1080,2000);
 
 ctx.font="45px sans-serif";
 
-
-ctx.fillText(
-
-"Thank You For Being Part Of This Journey",
-
-1080,
-
-2100
-
-);
+ctx.fillText("Thank You For Being Part Of This Journey",1080,2100);
 
 
 /* Download */
@@ -230,6 +204,8 @@ link.href=canvas.toDataURL();
 
 link.click();
 
+
+}
 
 }
 
